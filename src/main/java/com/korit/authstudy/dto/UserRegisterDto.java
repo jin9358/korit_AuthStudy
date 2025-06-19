@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
-@RequiredArgsConstructor
 public class UserRegisterDto {
-
-    private final BCryptPasswordEncoder passwordEncoder;
 
     private String username;
     private String password;

@@ -1,21 +1,17 @@
 package com.korit.authstudy.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Table(name = "members_tb")
 public class Member {
-    
-    @Id     // PK 세팅
-    @GeneratedValue(strategy = GenerationType.IDENTITY)     // AI 세팅
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Integer id;
     private String memberName;

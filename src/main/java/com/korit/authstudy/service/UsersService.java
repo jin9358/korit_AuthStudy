@@ -7,6 +7,8 @@ import com.korit.authstudy.dto.UserRegisterDto;
 import com.korit.authstudy.repository.UsersRepository;
 import com.korit.authstudy.security.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +29,15 @@ public class UsersService {
 
     public JwtDto login(LoginDto dto) {
         List<User> foundUsers = usersRepository.findByUsername(dto.getUsername());
-        if(foundUsers.isEmpty()) {
-            System.out.println("아이디 없음");
-            return null;
+        if (foundUsers.isEmpty()) {
+            throw new UsernameNotFoundException("사용자 정보를 확인하세요.");
         }
         User user = foundUsers.get(0);
-        if(!passwordEncoder.matches(dto.getPassword(), user.getPassword())){
-            System.out.println("비밀번호 틀림");
-            return null;
+        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+            throw new BadCredentialsException("사용자 정보를 확인하세요");
         }
         System.out.println("로그인 성공 토큰 생성");
         String token = jwtUtil.generateAccessToken(user.getId().toString());
-        // user.getId()를 할 경우 Integer 이기 때문에 .toString() 하여 문자열로 변경
         return JwtDto.builder().accessToken(token).build();
     }
 }
