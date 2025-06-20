@@ -1,6 +1,6 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/auth_study_db
     username: root
     password: 1q2w3e4r
@@ -21,4 +21,4 @@ mybatis:
 
 
 jwt:
-  secret: 32f515460744c1c3164b361b0f43ab473381bc352d55414676e14daef8d0afc9
+  secret: 8a509677e2bd4eb0e346b28ee1dab2b1fe050a177b59dd9fc3df89d1d8944d67

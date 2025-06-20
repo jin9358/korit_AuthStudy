@@ -7,8 +7,10 @@ import com.korit.authstudy.security.service.JwtService;
 import com.korit.authstudy.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -36,8 +38,23 @@ public class UsersController {
     @GetMapping("/login/status")
     public ResponseEntity<?> getLoginStatus(@RequestHeader("Authorization") String authorization) {
         System.out.println(authorization);
-        jwtService.validAccessToken(authorization);
-        return ResponseEntity.ok("");
+        return ResponseEntity.ok(jwtService.validLoginAccessToken(authorization));
+    }       // 이 기능들 필터에 다 구현
+    
+    @GetMapping("/principal")
+    public ResponseEntity<?> getLoginUser() {
+        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication());
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+

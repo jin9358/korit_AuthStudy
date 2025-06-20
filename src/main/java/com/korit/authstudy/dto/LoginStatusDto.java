@@ -3,8 +3,8 @@ package com.korit.authstudy.dto;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
 @Builder
+@Data
 public class LoginStatusDto {
     private String status;
     private boolean isLogin;

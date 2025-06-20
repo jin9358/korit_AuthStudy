@@ -31,3 +31,12 @@ public class MemberRegisterDto extends Object {
                 .build();
     }
 }
+
+
+
+
+
+
+
+
+

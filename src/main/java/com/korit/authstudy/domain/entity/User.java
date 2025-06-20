@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "users_tb")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "users_id")
@@ -24,3 +24,14 @@ public class User {
     private String fullName;
     private String email;
 }
+
+
+
+
+
+
+
+
+
+
+

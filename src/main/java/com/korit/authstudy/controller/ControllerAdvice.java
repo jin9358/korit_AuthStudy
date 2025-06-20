@@ -2,6 +2,8 @@ package com.korit.authstudy.controller;
 
 import com.korit.authstudy.exception.BearerValidException;
 import io.jsonwebtoken.JwtException;
+import jakarta.transaction.Status;
+import jdk.jshell.Snippet;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;

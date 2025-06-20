@@ -34,10 +34,18 @@ public class UsersService {
         }
         User user = foundUsers.get(0);
         if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            throw new BadCredentialsException("사용자 정보를 확인하세요");
+            throw new BadCredentialsException("사용자 정보를 확인하세요.");
         }
         System.out.println("로그인 성공 토큰 생성");
         String token = jwtUtil.generateAccessToken(user.getId().toString());
         return JwtDto.builder().accessToken(token).build();
     }
 }
+
+
+
+
+
+
+
+
